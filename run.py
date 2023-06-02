@@ -1,6 +1,7 @@
 import openai
 import os
 from flask import Flask,request
+from waitress import serve
 
 app = Flask(__name__)
 openai.api_type = "azure"
@@ -34,5 +35,6 @@ def hello_world():
 
 
 if (__name__ == '__main__'):
-    app.run(debug=True, port=8000, host="0.0.0.0")
-    # waitress.serve(app.debug, host='192.168.0.103',port=15000, url_scheme='https')
+    # app.run(debug=True, port=8000, host="0.0.0.0")
+    print("Waitress Running")
+    serve(app, host='0.0.0.0',port=15000)
